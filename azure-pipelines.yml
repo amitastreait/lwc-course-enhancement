@@ -14,7 +14,10 @@ trigger:
     - azure-pipelines
 
 variables:
- - group: salesforce-credentials
+ - ${{ if eq(variables['Build.SourceBranch'], 'main') }}:
+    - group: salesforce-prod-credentials
+  - ${{ if ne(variables['Build.SourceBranch'], 'azure-pipelines') }}:
+    - group: salesforce-credentials
 
 pr:
  paths:
