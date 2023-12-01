@@ -37,15 +37,32 @@ stages:
       - script: echo Testing on Linux!
     - job: ConnectWithSalesforce
       steps:
+        - checkout: self
+          fetchDepth: 0
+        - task: DownloadSecureFile@1
+          name: openSSLCertificate
+          inputs:
+            secureFile: 'server.key'
         - script: npm install
+          displayName: Install the NPM
         - script: npm install @salesforce/cli --global
+          displayName: Install the new Salesforce CLI
         - script: sf --version
-        - script: echo "Decrypt the server.key.enc file & store it inside the assets folder"
+          displayName: check the SF Version
         - script: openssl enc -nosalt -aes-256-cbc -d -in $(ENCRYPTION_KEY_FILE) -out $(JWT_KEY_FILE) -base64 -K $(DECRYPTION_KEY) -iv $(DECRYPTION_IV)
-        - script: echo "Authenticate Salesforce ORG"
+          displayName: Convert the Encrypted file to the correct key file
         - script: sf org login jwt --client-id $(SFDC_CLIENT_ID) --jwt-key-file  $(JWT_KEY_FILE) --username $(SFDC_USER_NAME) --set-default --alias HubOrg --instance-url $(SFDC_LOGIN_URL)
-        - script: echo "Validate Source Code Against Salesforce ORG"
+          displayName: Connect with Salesforce Org
         - script: sf project deploy start --source-dir force-app --target-org HubOrg --coverage-formatters clover
+          displayName: Deploy the Code to Salesforce Org
+        - script: echo y | sf plugins install sfdx-git-delta
+          displayName: Install the SFDX Git delta package
+        - script: mkdir delta
+          displayName: Create delta folter
+        - script: sf sgd source delta --from HEAD^ --output "./delta" --ignore-whitespace --generate-delta
+          displayName: find the difference in the code base
+        - script: cat delta/package.xml
+          displayName: diplaye the content of the packge.xml
       
   - stage: Deploy
     jobs:
