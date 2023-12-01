@@ -26,26 +26,20 @@ stages:
     - job: BuildJob
       steps:
       - script: echo Building!
-      - script: npm install
-      - script: npm install @salesforce/cli --global
-      - script: sf --version
 
   - stage: Test
     jobs:
     - job: TestOnWindows
       steps:
       - script: echo Testing on Windows!
-      - script: npm install
-      - script: npm install @salesforce/cli --global
-      - script: sf --version
     - job: TestOnLinux
       steps:
       - script: echo Testing on Linux!
-      - script: npm install
-      - script: npm install @salesforce/cli --global
-      - script: sf --version
     - job: ConnectWithSalesforce
       steps:
+        - script: npm install
+        - script: npm install @salesforce/cli --global
+        - script: sf --version
         - script: echo "Decrypt the server.key.enc file & store it inside the assets folder"
         - script: openssl enc -nosalt -aes-256-cbc -d -in $(ENCRYPTION_KEY_FILE) -out $(JWT_KEY_FILE) -base64 -K $(DECRYPTION_KEY) -iv $(DECRYPTION_IV)
         - script: echo "Authenticate Salesforce ORG"
