@@ -1,0 +1,63 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+- release/*
+- azure-pipelines
+
+variables:
+ - group: salesforce-credentials
+
+pr:
+ - main
+ - release/*
+ - azure-pipelines
+
+pool:
+  vmImage: ubuntu-latest
+  
+stages:
+
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+      - script: echo Building!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
+
+  - stage: Test
+    jobs:
+    - job: TestOnWindows
+      steps:
+      - script: echo Testing on Windows!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
+    - job: TestOnLinux
+      steps:
+      - script: echo Testing on Linux!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
+    - job: ConnectWithSalesforce
+      steps:
+        - script: echo "Decrypt the server.key.enc file & store it inside the assets folder"
+        - script: openssl enc -nosalt -aes-256-cbc -d -in $(ENCRYPTION_KEY_FILE) -out $(JWT_KEY_FILE) -base64 -K $(DECRYPTION_KEY) -iv $(DECRYPTION_IV)
+        - script: Authenticate Salesforce ORG
+        - script: sf org login jwt --client-id $(SFDC_CLIENT_ID) --jwt-key-file  $(JWT_KEY_FILE) --username $(SFDC_USER_NAME) --set-default --alias HubOrg --instance-url $(SFDC_LOGIN_URL)
+        - script: Validate Source Code Against Salesforce ORG
+        - script: sf project deploy deploy --source-dir force-app --test-level RunLocalTests --target-org HubOrg --coverage-formatters clover
+      
+  - stage: Deploy
+    jobs:
+    - job: Deploy
+      steps:
+      - script: echo Deploying the code!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
