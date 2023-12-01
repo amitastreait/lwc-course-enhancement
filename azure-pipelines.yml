@@ -69,10 +69,11 @@ stages:
           displayName: Install the SFDX Git delta package
         - script: mkdir delta
           displayName: Create delta folter
-        - script: sf sgd source delta --from origin/azure-pipelines --to HEAD --output "./delta" --ignore-whitespace --generate-delta
+        - script: sf sgd source delta --from $(git merge-base HEAD origin/master) --to HEAD --output "./delta" --ignore-whitespace --generate-delta
           displayName: find the difference in the code base
         - script: cat delta/package/package.xml
           displayName: display the content of the packge.xml
+        - script: echo $(git merge-base HEAD origin/master)
       
   - stage: Deploy
     jobs:
