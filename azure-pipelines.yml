@@ -1,0 +1,50 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+- release/*
+
+pr:
+ - main
+ - release/*
+
+pool:
+  vmImage: ubuntu-latest
+  
+stages:
+
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+      - script: echo Building!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
+
+  - stage: Test
+    jobs:
+    - job: TestOnWindows
+      steps:
+      - script: echo Testing on Windows!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
+    - job: TestOnLinux
+      steps:
+      - script: echo Testing on Linux!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
+      
+  - stage: Deploy
+    jobs:
+    - job: Deploy
+      steps:
+      - script: echo Deploying the code!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
