@@ -14,6 +14,7 @@ variables:
 pr:
  - main
  - release/*
+ - azure-pipelines
 
 pool:
   vmImage: ubuntu-latest
