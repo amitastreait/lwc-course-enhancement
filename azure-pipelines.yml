@@ -4,17 +4,27 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
-- release/*
-- azure-pipelines
+ paths:
+  include:
+    - force-app/main/default/*
+ branches:
+  include:
+    - main
+    - release/*
+    - azure-pipelines
 
 variables:
  - group: salesforce-credentials
 
 pr:
- - main
- - release/*
- - azure-pipelines
+ paths:
+  include:
+    - force-app/main/default/*
+ branches:
+   include:
+    - main
+    - release/*
+    - azure-pipelines
 
 pool:
   vmImage: ubuntu-latest
