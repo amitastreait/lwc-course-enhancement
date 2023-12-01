@@ -72,7 +72,7 @@ stages:
         - script: sf sgd source delta --from HEAD^ --output "./delta" --ignore-whitespace --generate-delta
           displayName: find the difference in the code base
         - script: cat delta/package/package.xml
-          displayName: diplaye the content of the packge.xml
+          displayName: display the content of the packge.xml
       
   - stage: Deploy
     jobs:
