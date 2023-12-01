@@ -15,6 +15,7 @@ public class MapDemo {
                 'Japan'=>'YEN'
                 };
                     System.debug(countryToCurrencyMapNew1);
+        System.debug(countryToCurrencyMapNew1);
         
         // Employee Id => Salary
         Map<String, Decimal> employeeIdToSalaryMap = new Map<String, Decimal>{
