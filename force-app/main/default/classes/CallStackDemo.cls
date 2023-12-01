@@ -8,7 +8,7 @@ public class CallStackDemo {
     // 				
     // Entry Point
     public void methodA(){
-        System.debug('Method A is Calling Method B - Changed from Repo');
+        System.debug('Method A is Calling Method B');
         String name = 'Amit Singh';
         Integer age = 34;
         Decimal salary = 89377434.53;
