@@ -9,7 +9,7 @@ trigger:
 - azure-pipelines
 
 variables:
- - group: 
+ - group: salesforce-credentials
 
 pr:
  - main
