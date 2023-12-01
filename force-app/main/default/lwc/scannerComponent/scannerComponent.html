@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Amit Singh
+  @group             : 
+  @last modified on  : 11-25-2023
+  @last modified by  : Amit Singh
+-->
+<template>
+    <lightning-card title="Bar Code Scanner" icon-name="custom:custom64" variant="base" >
+        <div class="slds-m-around_small slds-text-align_center">
+            <div class="slds-text-heading_large">
+                Scan Bar Code using LWC
+            </div>
+        </div>
+        <div class="slds-m-around_small">
+            <lightning-button label="Start Scanning Session" icon-name="utility:scan" variant="brand" onclick={handleBeginScanning} >
+            </lightning-button>
+        </div>
+        <div if:true={scannedBarCodeResult} class="slds-m-around_small">
+            {scannedBarCodeResult}
+        </div>
+    </lightning-card>
+</template>

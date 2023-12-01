@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : Amit Singh
+  @group             : 
+  @last modified on  : 11-25-2023
+  @last modified by  : Amit Singh
+-->
+<template>
+    <lightning-card title="Toast Container Component" icon-name="custom:custom34">
+        <div class="slds-m-around_large">
+            <lightning-button label="Success Toast" variant="success" value="Success Toast" onclick={handleSuccess}>
+            </lightning-button>
+
+            <lightning-button label="Show Error Toast" value="Show Error Toast" onclick={handleError}>
+            </lightning-button>
+
+            <lightning-button label="Show Warning Toast"  value="Show Warning Toast" onclick={handleWarning}>
+            </lightning-button>
+
+            <lightning-button label="Show Info Toast"  value="Show Info Toast" onclick={handleInfo}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Amit Singh
+  @group             : 
+  @last modified on  : 11-26-2023
+  @last modified by  : Amit Singh
+-->
+<template>
+    <lightning-card title="Lightning Record Picker" icon-name="standard:contact">
+        <lightning-record-picker
+            lwc:ref="lookup"
+            display-info={displayInfo}
+            matching-info={matchingInfo}
+            filter={filter}
+            required label={label} 
+            object-api-name={objectName}
+            placeholder={placeholder}
+            onchange={handleSelect}
+            onfocus={handleFocus}
+            >
+        </lightning-record-picker>
+    </lightning-card>
+</template>

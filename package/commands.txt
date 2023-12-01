@@ -1,0 +1,1 @@
+sf package create --name UTILITY --description "My Simple Package" --package-type Managed --path force-app --target-dev-hub utility-org

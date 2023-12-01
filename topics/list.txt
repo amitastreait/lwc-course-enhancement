@@ -1,0 +1,8 @@
+Query Multiple Objects Dynamically (graph QL ) - https://developer.salesforce.com/docs/platform/graphql/guide/graphql-wire-lwc-best.html
+https://help.salesforce.com/s/articleView?id=sf.graphQL_requirements.htm&type=5
+
+===== YouTube ========= 
+Salesforce Inspector - Reloaded
+Apex Replay Debugger
+Salesforce Field API Names
+Boostr for Salesforce

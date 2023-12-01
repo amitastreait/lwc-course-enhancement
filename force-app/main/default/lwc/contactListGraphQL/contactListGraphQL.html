@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="ContactList GraphQL" icon-name="standard:contact">
+
+        <lightning-spinner variant="brand" size="small" if:true={isLoading}></lightning-spinner>
+
+        <div class="slds-m-around_large">
+            <lightning-input type="search" placeholder="search contacts with name" label="Search Contacts" onchange={handleChange}>
+            </lightning-input>
+        </div>
+        <div class="slds-m-around_large">
+            <lightning-datatable
+                key-field="Id"
+                columns={columnsList}
+                data={dataList}
+            >
+            </lightning-datatable>
+            <p class="slds-text-align_center slds-p-top_medium" style="color: lightseagreen;">
+                displaying page {pageNumber} of {totalPages} from total records {totalCount}.
+            </p>
+        </div>
+        <div class="slds-m-around_large">
+            <lightning-icon class="page-buttons" variant="brand" icon-name="utility:loop" onclick={handleReset} ></lightning-icon>
+            <lightning-icon class="page-buttons slds-float_right" disabled={disableNextButton} variant="brand" icon-name="utility:chevronright" onclick={handleNext} ></lightning-icon>
+        </div>
+    </lightning-card>
+</template>

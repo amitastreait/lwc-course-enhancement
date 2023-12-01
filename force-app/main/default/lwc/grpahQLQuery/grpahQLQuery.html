@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Graph QL" icon-name="custom:custom55">
+        <div class="slds-m-around_large">
+            <lightning-input type="search" placeholder="search contacts with name" label="Search Contacts" onchange={handleChange}>
+            </lightning-input>
+        </div>
+        <div class="slds-m-around_large">
+            <template if:true={records} for:each={records} for:item="rec" for:index="index">
+                <div class="slds-m-around_small" key={rec.node.Id}>
+                    <p>{rec.node.Name.value}</p>
+                    <p>{rec.node.Account.Name.value}</p>
+                    <p>{rec.node.Account.Rating.value}</p>
+                </div>
+            </template>
+        </div>
+        <div class="slds-m-around_large">
+            <lightning-datatable
+                key-field="Id"
+                columns={columnsList}
+                data={dataList}
+            >
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

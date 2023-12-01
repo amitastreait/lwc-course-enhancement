@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : Amit Singh
+  @group             : 
+  @last modified on  : 11-28-2023
+  @last modified by  : Amit Singh
+-->
+<template>
+    <template for:each={results} for:item="result">
+        <lightning-card key={result.result.listReference.relatedListId} title={result.result.listReference.relatedListId}>
+            <template lwc:if={result.result.count}>
+                <div class="slds-m-around_medium">
+                    <template for:each={result.result.records} for:item="rec">
+                        <p key={rec.fields.Name.value}>{rec.fields.Name.value}</p>
+                    </template>
+                </div>
+            </template>
+        </lightning-card>
+    </template>
+</template>

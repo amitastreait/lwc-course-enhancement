@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : Amit Singh
+  @group             : 
+  @last modified on  : 11-25-2023
+  @last modified by  : Amit Singh
+-->
+<template>
+    <lightning-card>
+        <div class="slds-m-around_large">
+            <c-org-based-deployment lwc:spread={params} lwc:ref="childComponent"></c-org-based-deployment>
+            <lightning-input type="text" label="Name" name="FirstName" class="first-name" lwc:ref="name" >
+            </lightning-input>
+            <lightning-button label="Click Me" value="Click Me" onclick={handleClick}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

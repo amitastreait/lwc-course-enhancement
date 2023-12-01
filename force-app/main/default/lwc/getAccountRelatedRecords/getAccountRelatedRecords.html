@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : Amit Singh
+  @group             : 
+  @last modified on  : 11-28-2023
+  @last modified by  : Amit Singh
+-->
+<template>
+    <lightning-card title="All Contacts" icon-name="standard:contact">
+        <div class="slds-m-around_small">
+            <template if:true={isLoaded} for:each={records} for:item="con" for:index="index">
+                <div key={con.fields.Id.value}>
+                    <p>{con.fields.Name.value}</p>
+                    <p>{con.fields.Email.value}</p>
+                    <p>{con.fields.Phone.value}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

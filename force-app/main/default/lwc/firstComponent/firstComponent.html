@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : Amit Singh
+  @group             : 
+  @last modified on  : 11-09-2023
+  @last modified by  : Amit Singh
+-->
+<template>
+    <lightning-card icon-name="standard:contact" variant="Narrow" title="Visitantes">
+        <div class="slds-p-around_large">
+            <lightning-button variant="brand" label="Process Selected Rows" onclick={handleSelectedRowsClick}></lightning-button>
+        </div>
+        <div class="slds-p-around_large">
+            <lightning-datatable
+                key-field="Id"
+                data={contactData}
+                columns={columnList}
+                show-row-number-column
+                onrowaction={handleRowAction}
+                sorted-by={sortBy}
+                sorted-direction={sortDirection}
+                onsort={handleSortdata}
+                selected-rows={selectedRows}
+                onrowselection={handleSelectedRows}
+                draft-values={draftValues}
+                onsave={handleSave}
+                hide-checkbox-column
+            ></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

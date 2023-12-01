@@ -1,0 +1,15 @@
+{
+  "orgName": "Panther Schools",
+  "edition": "Enterprise",
+  "features": ["EnableSetPasswordInApi"],
+  "hasSampleData": true,
+  "username": "amit.singh@gmail.com.2353",
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    }
+  }
+}
