@@ -46,7 +46,7 @@ stages:
       - script: sf --version
     - job: ConnectWithSalesforce
       steps:
-        - script: echo Decrypt the server.key.enc file & store it inside the assets folder
+        - script: echo "Decrypt the server.key.enc file & store it inside the assets folder"
         - script: openssl enc -nosalt -aes-256-cbc -d -in $(ENCRYPTION_KEY_FILE) -out $(JWT_KEY_FILE) -base64 -K $(DECRYPTION_KEY) -iv $(DECRYPTION_IV)
         - script: Authenticate Salesforce ORG
         - script: sf org login jwt --client-id $(SFDC_CLIENT_ID) --jwt-key-file  $(JWT_KEY_FILE) --username $(SFDC_USER_NAME) --set-default --alias HubOrg --instance-url $(SFDC_LOGIN_URL)
