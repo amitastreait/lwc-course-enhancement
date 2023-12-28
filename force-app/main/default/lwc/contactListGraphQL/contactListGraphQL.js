@@ -1,6 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import { gql, graphql } from "lightning/uiGraphQLApi";
-
+import { log } from 'lightning/logger';
 const columns = [
     { label : "Name", fieldName : "Name", type : 'text' },
     { label : "Phone", fieldName : "Phone", type : 'phone' },
@@ -105,6 +105,7 @@ export default class ContactListGraphQL extends LightningElement {
     })
     wiredGrahpQLResult({data, error}){
         if(data){
+            log(data);
             this.pageInfo = data.uiapi.query?.Contact?.pageInfo;
             this.totalCount = data.uiapi.query?.Contact?.totalCount;
             this.dataList = data.uiapi.query?.Contact?.edges?.map( (item) => {
