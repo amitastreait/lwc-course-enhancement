@@ -1,0 +1,29 @@
+<template>
+    <lightning-card  variant="Narrow" title="Quick Case" icon-name="standard:case">
+        <div class="slds-p-horizontal_medium">
+            <!--Subject-->
+            <lightning-input type="text" variant="standard" name="Subject" label="Subject" ></lightning-input>
+            <lightning-textarea
+              max-length="1000"
+              name="Description" 
+              label="Description"
+              variant="standard"
+            ></lightning-textarea>
+            <lightning-input type="text" variant="standard" name="ContactName" label="Contact Name" ></lightning-input>
+            <lightning-combobox
+                name="Status"
+                label="Status"
+                placeholder="Select Status"
+                options={statusOptions}
+            >
+            </lightning-combobox>
+            <lightning-combobox
+                name="Priority"
+                label="Priority"
+                placeholder="Select Priority"
+                options={priorityOptions}
+            >
+            </lightning-combobox>
+        </div>
+    </lightning-card>
+</template>
