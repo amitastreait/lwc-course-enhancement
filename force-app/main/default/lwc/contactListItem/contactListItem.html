@@ -1,0 +1,12 @@
+<template>
+    <a href="javascript:void(0)" onclick={handleSelect}>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="12" padding="around-small" small-device-size="12" medium-device-size="6" large-device-size="4">
+                <img src={contact.Picture__c} alt={contact.FirstName} />
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small" small-device-size="12" medium-device-size="6" large-device-size="8">
+                {contact.FirstName} {contact.LastName}
+            </lightning-layout-item>
+        </lightning-layout>
+    </a>
+</template>

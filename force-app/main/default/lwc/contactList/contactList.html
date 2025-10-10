@@ -1,0 +1,17 @@
+<template>
+    <lightning-card variant="Narrow" title="Contact List" icon-name="standard:contact">
+        <div class="slds-p-horizontal_small">
+            <div onselect={handleCOntactSelected}>
+                <template for:each={contacts} for:item="contact" for:index="index">
+                    <!--DOM Boundary-->
+                    <c-contact-list-item
+                        key={contact.Email}
+                        contact={contact}
+                        >
+                    </c-contact-list-item>
+                </template>
+            </div>
+        </div>
+        <div slot="footer">Card Footer</div>
+    </lightning-card>
+</template>
