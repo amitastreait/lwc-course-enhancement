@@ -1,5 +1,8 @@
 <template>
     <div onselect={handleCOntactSelected}>
-        <c-contact-list></c-contact-list>
+        <c-contact-list lwc:ref="contactList" ></c-contact-list>
+    </div>
+    <div class="slds-m-around_medium">
+        <lightning-button variant="brand" label="Call Child" title="Call Child" onclick={handleClick}></lightning-button>
     </div>
 </template>

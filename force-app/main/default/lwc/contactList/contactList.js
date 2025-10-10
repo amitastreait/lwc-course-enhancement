@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { api, LightningElement } from 'lwc';
 
 export default class ContactList extends LightningElement {
     contacts = [
@@ -22,5 +22,20 @@ export default class ContactList extends LightningElement {
 
     handleCOntactSelected(event){
         console.log(event.detail);
+    }
+
+    @api
+    handleSum(a, b){
+        return Number(b) + Number(a);
+    }
+
+    @api
+    welcomeMessage(){
+        return 'Welcome message';
+    }
+
+    @api
+    fetchAccounts(){
+        
     }
 }
