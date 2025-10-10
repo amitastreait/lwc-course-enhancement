@@ -1,0 +1,12 @@
+<template>
+    <lightning-card  variant="Narrow" title="Events in LWC" icon-name="standard:account">
+        <div class="slds-p-horizontal_small">
+            <h1>Parent Component</h1>
+            {message}
+            <br/>
+            {source}
+            <c-child ondatachange={handleDataChange}></c-child>
+        </div>
+        <div slot="footer">Card Footer</div>
+    </lightning-card>
+</template>
