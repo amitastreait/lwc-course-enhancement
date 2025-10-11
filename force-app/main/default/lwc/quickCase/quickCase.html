@@ -1,6 +1,14 @@
 <template>
     <lightning-card  variant="Narrow" title="Quick Case" icon-name="standard:case">
         <div class="slds-p-horizontal_medium">
+            <p>
+                {recordId}
+            </p>
+             <p>
+                {objectApiName}
+            </p>
+        </div>
+        <div class="slds-p-horizontal_medium">
             <!--Subject-->
             <lightning-input type="text" variant="standard" name="Subject" label="Subject" ></lightning-input>
             <lightning-textarea

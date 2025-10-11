@@ -7,4 +7,10 @@
         <target>lightning__AppPage</target>
         <target>lightning__HomePage</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property type="String" name="recordId" label="record id" default="{recordId}"/>
+            <property type="String" name="objectApiName" label="object api name" default="{objectApiName}"/>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

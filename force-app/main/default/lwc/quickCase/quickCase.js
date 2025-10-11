@@ -1,6 +1,14 @@
-import { LightningElement } from 'lwc';
+import { api, LightningElement } from 'lwc';
 
 export default class QuickCase extends LightningElement {
+
+    @api recordId;
+    @api objectApiName;
+
+    connectedCallback(){
+        console.log('Record Id', this.recordId);
+        console.log('Object API Name', this.objectApiName);
+    }
 
     get statusOptions(){
         return [
